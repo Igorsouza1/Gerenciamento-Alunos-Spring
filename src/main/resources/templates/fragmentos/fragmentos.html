@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/style.css">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:fragment="header" class="fixed-top header">
+  <!-- navbar -->
+  <div class="navigation w-100">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light p-0">
+        <a class="navbar-brand" th:href="@{/}"><img src="/img/logo.png" alt="logo"></a>
+        <button class="navbar-toggler rounded-0" type="button" data-toggle="collapse" data-target="#navigation"
+          aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navigation">
+          <ul class="navbar-nav ml-auto text-center">
+            <li class="nav-item active">
+              <a class="nav-link" th:href="@{/}">Home</a>
+            </li>
+            <li class="nav-item @@about">
+              <a class="nav-link" th:href="@{/inseriralunos}">Cadastrar Aluno</a>
+            </li>
+            <li class="nav-item @@courses">
+              <a class="nav-link" th:href="@{/filtro-alunos}">Pesquisar aluno</a>
+            </li>	
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+<section th:fragment="background" class="hero-section overlay bg-cover" data-background="/img/banner-1.jpg"></section>
+	
+	<script src="/webjars/jquery/3.6.0/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>	
+</body>
+</html>

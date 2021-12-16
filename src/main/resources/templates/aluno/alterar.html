@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/style.css">
+<title>Inserir alunos</title>
+</head>
+<body>
+	<div th:replace="/fragmentos/fragmentos :: header"></div>
+	
+	<div class="container" style="margin-top: 150px;">
+		<h2 style="color: black;">+ Alterar Aluno</h2>
+		<form method="POST" action="/alterar" th:object="${aluno}">
+		<input type="hidden" th:field="*{id}">
+			<div class="row">
+				<div class="col-md-6 form-group offset-md-3">
+					<label >Nome do Aluno:</label>
+					<input class="form-control" placeholder="Ex: Matheus Souza" th:field="*{nome}">				
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-6 form-group offset-md-3">
+					<label >Selecione o curso:</label>
+					<select class="form-control" th:field="*{curso}">
+						<option th:each="curso : ${T(com.example.demo.enums.CursoEnum).values()}" th:value="${curso}" th:text="${curso}"></option>
+					</select>		
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-6 form-group offset-md-3">
+					<label >Gerar Matricula:</label>
+					<input readonly="readonly" id="matricula" class="form-control" th:field="*{matricula}">	
+					<button type="button" onclick="GerarMatricula()" class="btn btn-primary" style="margin-top: 10px">Gerar</button>			
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-6 form-group offset-md-3">
+					<label >Selecione o status:</label>
+					<select class="form-control" th:field="*{status}">
+						<option th:each="status : ${T(com.example.demo.enums.StatusEnum).values()}" th:value="${status}" th:text="${status}"></option>
+					</select>		
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-6 form-group offset-md-3">
+					<label >Turno:</label>
+					<input class="form-control" placeholder="Ex: Vespertino" th:field="*{turno}">				
+				</div>
+			</div>
+			
+			<div class="row">
+				<button type="submit" style="width: 150px; margin-top: 10px" class="btn btn-primary offset-md-5">Salvar</button>
+				
+			</div>
+		</form>
+	</div>
+	
+	<script src="/js/main.js"></script>
+	<script src="/webjars/jquery/3.6.0/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>		
+</body>
+</html>
